@@ -1,8 +1,15 @@
 # Phaser Vite TypeScript Template
 
-This is a Phaser 3 project template that uses Vite for bundling. It supports hot-reloading for quick development workflow, includes TypeScript support and scripts to generate production-ready builds.
+This is a modified version of the official Phaser 3 project template that uses Vite for bundling. In addition to the original template's features, this version includes:
 
-**[This Template is also available as a JavaScript version.](https://github.com/phaserjs/template-vite)**
+- ESLint configuration with TypeScript support
+- Prettier code formatting
+- EditorConfig for consistent coding style
+- Modern ESLint flat config format (eslint.config.mjs)
+
+The template supports hot-reloading for quick development workflow, includes TypeScript support and scripts to generate production-ready builds.
+
+**[The original template is available here](https://github.com/phaserjs/template-vite-ts)**
 
 ### Versions
 
@@ -11,6 +18,8 @@ This template has been updated for:
 - [Phaser 3.88.2](https://github.com/phaserjs/phaser)
 - [Vite 5.3.1](https://github.com/vitejs/vite)
 - [TypeScript 5.4.5](https://github.com/microsoft/TypeScript)
+- [ESLint 9.23.0](https://eslint.org)
+- [Prettier 3.5.3](https://prettier.io)
 
 ![screenshot](screenshot.png)
 
@@ -20,13 +29,29 @@ This template has been updated for:
 
 ## Available Commands
 
-| Command               | Description                                                                                              |
-| --------------------- | -------------------------------------------------------------------------------------------------------- |
-| `npm install`         | Install project dependencies                                                                             |
-| `npm run dev`         | Launch a development web server                                                                          |
-| `npm run build`       | Create a production build in the `dist` folder                                                           |
-| `npm run dev-nolog`   | Launch a development web server without sending anonymous data (see "About log.js" below)                |
-| `npm run build-nolog` | Create a production build in the `dist` folder without sending anonymous data (see "About log.js" below) |
+| Command            | Description                                    |
+| ------------------ | ---------------------------------------------- |
+| `npm install`      | Install project dependencies                   |
+| `npm run dev`      | Launch a development web server                |
+| `npm run build`    | Create a production build in the `dist` folder |
+| `npm run lint`     | Check for linting issues                       |
+| `npm run lint:fix` | Automatically fix linting issues               |
+| `npm run format`   | Format all TypeScript files using Prettier     |
+
+## Code Style and Linting
+
+This template includes a carefully selected set of ESLint rules focused on TypeScript best practices:
+
+- Type safety checks
+- Unused variable detection
+- Modern ES6+ import/export enforcement
+- Consistent code formatting via Prettier
+
+The configuration files can be found in:
+
+- `.eslint.config.mjs` - ESLint configuration
+- `.prettierrc` - Prettier formatting rules
+- `.editorconfig` - Editor configuration for consistent coding style
 
 ## Writing Code
 
@@ -55,7 +80,7 @@ Vite supports loading assets via JavaScript module `import` statements.
 This template provides support for both embedding assets and also loading them from a static folder. To embed an asset, you can import it at the top of the JavaScript file you are using it in:
 
 ```js
-import logoImg from "./assets/logo.png";
+import logoImg from './assets/logo.png';
 ```
 
 To load static files such as audio files, videos, etc place them into the `public/assets` folder. Then you can use this path in the Loader calls within Phaser:
@@ -65,11 +90,11 @@ preload();
 {
   //  This is an example of an imported bundled image.
   //  Remember to import it at the top of this file
-  this.load.image("logo", logoImg);
+  this.load.image('logo', logoImg);
 
   //  This is an example of loading a static image
   //  from the public/assets folder:
-  this.load.image("background", "assets/bg.png");
+  this.load.image('background', 'assets/bg.png');
 }
 ```
 
